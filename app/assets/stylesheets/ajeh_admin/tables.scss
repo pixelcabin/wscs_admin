@@ -1,0 +1,199 @@
+section.tabular + section.tabular {
+  margin-top: 30px;
+}
+section.tabular header {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 0 30px 10px;
+}
+section.tabular header:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  height: 1px;
+  background-color: #f1f1f1;
+  html.support-css-hairlines & {
+    height: 0.5px;
+  }
+}
+section.tabular header h1 {
+  display: inline-block;
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+section.tabular header h1 i {
+  margin-left: .5em;
+  font-weight: normal;
+}
+section.tabular header a {
+  margin-left: 20px;
+  display: inline-block;
+  padding: 5px 12px;
+  font-size: 16px;
+  font-weight: 400;
+  color: #fff;
+  background-color: #34e0c2;
+  border-radius: 5px;
+}
+.table-wrapper {
+  margin: 0 auto;
+  border-radius: 5px;
+}
+.table-wrapper > table {
+  width: 100%;
+}
+.table-wrapper > table th {
+  position: relative;
+  text-align: left;
+  padding: 0 18px 25px 0;
+  vertical-align: middle;
+  line-height: 1.4;
+  color: #aaa;
+  text-transform: uppercase;
+  font-size: 14px;
+}
+.table-wrapper > table th:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 18px;
+  right: 0;
+  background-color: #f1f1f1;
+  height: 1px;
+  html.support-css-hairlines & {
+    height: 0.5px;
+  }
+}
+.table-wrapper > table th:first-child {
+  padding-left: 30px;
+}
+.table-wrapper > table th:last-child {
+  padding-right: 30px;
+}
+.table-wrapper > table th:first-child:before {
+  left: 30px;
+}
+.table-wrapper > table td {
+  position: relative;
+  padding: 18px 18px 18px 0;
+  vertical-align: middle;
+  line-height: 1.4;
+}
+.table-wrapper > table td:before {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: #f1f1f1;
+  height: 1px;
+  html.support-css-hairlines & {
+    height: 0.5px;
+  }
+}
+.table-wrapper > table td:first-child {
+  padding-left: 30px;
+}
+.table-wrapper > table td:last-child {
+  padding-right: 30px;
+}
+.table-wrapper > table td:first-child:before {
+  left: 30px;
+}
+.table-wrapper > table tr:last-child td:before {
+  content: none;
+}
+.table-wrapper > table td span {
+  display: block;
+  margin-bottom: 4px;
+}
+.table-wrapper > table td span:last-child {
+  margin-bottom: 0;
+}
+.table-wrapper > table td span.tiny {
+  font-size: 16px;
+  color: #888;
+}
+.table-wrapper > table td.tiny {
+  color: #888;
+  width: 1px;
+  white-space: nowrap;
+}
+.table-wrapper > table td.nowrap {
+  white-space: nowrap;
+}
+.table-wrapper > table td.right {
+  text-align: right;
+}
+.table-wrapper > table td.small,
+.table-wrapper > table td.squeeze {
+  width: 1px;
+  white-space: nowrap;
+}
+.table-wrapper > table td.draft {
+  color: #bf616a;
+}
+.table-wrapper > table td.handle {
+  width: 1px;
+  white-space: nowrap;
+  opacity: 0;
+  cursor: row-resize;
+  @include transition(opacity 0.15s ease-in-out);
+}
+.table-wrapper > table td.handle span:after {
+  content: '\e804';
+  font-family: 'ajeh-cms';
+  color: #888;
+  padding-left: 10px;
+}
+.table-wrapper > table tr:hover td.handle {
+  opacity: 1;
+}
+.table-wrapper > table tr:first-child td {
+  padding-top: 0;
+}
+.table-wrapper > table tr:last-child td {
+  border-bottom: none;
+}
+
+html.touch .table-wrapper > table td.handle {
+  display: none;
+}
+
+
+@media only screen and (max-width: 320px) {
+  section.tabular header h1 {
+    font-size: 14px;
+  }
+}
+
+.table-wrapper .tags {
+  display: block;
+  margin-top: 5px;
+}
+
+.table-wrapper .tags b {
+  $padding: 3px;
+  display: inline-block;
+  padding: ($padding + 1px) ($padding + 3px) ($padding + 0px);
+  font-size: 11px;
+  background-color: #eee;
+  text-transform: uppercase;
+  margin-right: 7px;
+}
+
+.table-placeholder {
+  margin: 30px;
+  color: darken(#fff, 30%);
+}
+
+.table-wrapper a {
+  // text-decoration: underline;
+  border-bottom: 1px solid #444;
+  html.support-css-hairlines & {
+    border-width: 0.5px;
+  }
+}

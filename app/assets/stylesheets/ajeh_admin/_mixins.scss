@@ -1,0 +1,12 @@
+@mixin d($color: red, $offset: 0px) {
+  outline: solid thin $color;
+  outline-offset: $offset;
+}
+
+@function color($key) {
+  @if map-has-key($color-stack, $key) {
+    @return map-get($color-stack, $key);
+  }
+  @warn "Unknown `#{$key}` in $color-stack.";
+  @return null;
+}

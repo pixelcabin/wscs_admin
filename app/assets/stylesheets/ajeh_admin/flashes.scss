@@ -1,0 +1,30 @@
+.flash {
+  position: fixed;
+  z-index: 10000;
+  top: -30px;
+  left: 0;
+  right: 0;
+  padding: 48px 65px 18px 30px;
+  color: #fff;
+  line-height: 1.4;
+  @include transform-origin(top center);
+  cursor: pointer;
+  @include transform(translateY(-100%));
+  // backface-visibility: hidden;
+}
+.flash:after {
+  content: '✕';
+  position: absolute;
+  top: 30px;
+  right: 20px;
+  bottom: 0;
+  @include display(flex);
+  @include align-items(center);
+  line-height: normal;
+}
+.flash.notice {
+  background-color: rgba(0,191,143,0.96);
+}
+.flash.alert {
+  background-color: rgba(220,20,60,0.96);
+}

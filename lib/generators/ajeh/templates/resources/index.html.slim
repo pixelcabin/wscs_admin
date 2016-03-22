@@ -1,0 +1,12 @@
+- content_for :page_header do
+  h1 <%= human_name.pluralize %>
+  = link_to 'Add <%= human_name %>', new_<%= singular_table_name %>_path
+section.tabular
+  .table-wrapper
+    table
+      tbody
+        - @<%= plural_table_name(false) %>.each do |<%= singular_table_name(false) %>|
+          tr data-action=(edit_<%= singular_table_name %>_path(<%= singular_table_name(false) %>))
+<% model_attributes.each do |attribute| -%>
+            td = <%= singular_table_name(false) %>.<%= attribute.name %>
+<% end -%>

@@ -1,0 +1,510 @@
+input[type="text"],
+input[type="password"],
+input[type="file"],
+button,
+select,
+textarea {
+  margin: 0;
+  padding: 0;
+  appearance: none;
+  border: 0;
+  background: none;
+  font-family: inherit;
+  font-size: inherit;
+  font-weight: inherit;
+  color: inherit;
+  outline: none;
+  border-radius: 0;
+  @include placeholder {
+    color: rgba(0,0,0,0.2);
+  }
+}
+
+// form.destroy-form {
+//   margin-top: 30px;
+//   padding: 30px 30px 0;
+//   border-top: solid 1px #f5f5f5;
+// }
+// @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
+//   form.destroy-form {
+//     border-top: 0;
+//     box-shadow: 0 -1px 1px -1px #ccc;
+//   }
+// }
+// form.destroy-form div {
+//   text-align: center;
+// }
+// form.destroy-form button {
+//   display: inline-block;
+//   padding: 12px 16px;
+//   color: #dc143c;
+//   border: solid 1px #f1f1f1;
+//   border-radius: 5px;
+//   @include transition(border-color 0.15s ease-in-out);
+// }
+// form.destroy-form button:hover {
+//   border-color: #dc143c;
+// }
+section.form form {
+  max-width: 700px;
+  // max-width: 1022px;
+  padding: 0 30px;
+  // margin: -18px 0 0;
+}
+section.form .field + fieldset {
+  position: relative;
+}
+section.form .field + fieldset,
+section.form fieldset + fieldset,
+section.form fieldset + .field {
+  margin-top: 36px;
+}
+section.form fieldset .field,
+section.form fieldset a.remove_fields {
+  // padding-left: 18px;
+}
+section.form fieldset a.remove_fields {
+  display: inline-block;
+  padding-top: 18px;
+  color: red;
+}
+section.form fieldset a.remove_fields:after {
+  content: '↑';
+  margin-left: 0.5em;
+  opacity: 0;
+  @include transition(opacity 0.15s ease-in-out);
+}
+section.form fieldset a.remove_fields:hover:after {
+  opacity: 1;
+}
+section.form fieldset a.add_fields {
+  display: inline-block;
+  margin-top: 18px;
+  // padding-left: 18px;
+  padding: 8px 14px;
+  color: $mainColor;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 14px;
+  border-radius: 3px;
+  border: solid 1px $buttonBorder;
+}
+// .nested-fields + .nested-fields {
+//   position: relative;
+//   margin-top: 20px;
+//   border-top: 1px solid color(lightBlue);
+// }
+// html.support-css-hairlines .nested-fields + .nested-fields {
+//   border-width: 0.5px;
+// }
+section.form fieldset legend {
+  width: 100%;
+  display: block;
+  color: #777;
+  background-color: #fff;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 14px;
+}
+section.form fieldset legend span {
+  display: block;
+}
+section.form .field {
+  position: relative;
+  padding-top: 18px;
+}
+section.form form > .field:first-of-type {
+  padding-top: 0;
+}
+section.form .field.error > label {
+  color: #dc143c;
+}
+section.form .field-label {
+  color: #777;
+  padding: 14px 0 10px;
+  white-space: nowrap;
+  @include transition(color 0.1s ease-in-out);
+  text-transform: uppercase;
+  font-size: 14px;
+  color: #aaa;
+  letter-spacing: 0.04em;
+}
+
+section.form .field:first-of-type .field-label {
+  padding-top: 0;
+}
+
+section.form .field-label {
+  display: block;
+}
+section.form .field.focussed .field-label {
+  color: #888;
+}
+section.form .field.focussed .controls {
+  border-color: darken(#fff, 30%);
+  // box-shadow: 0 0 8px $fieldFocusShadow;
+}
+section.form .controls.controls-select {
+  position: relative;
+}
+section.form .controls.controls-don {
+  padding: 0;
+  background: transparent;
+  border: 0;
+}
+section.form .controls.controls-select:before {
+  content: '';
+  position: absolute;
+  background: url('data:image/svg+xml;utf8,<svg xmlns="http://www.w3.org/2000/svg" viewBox="-947.7 555.4 10 6.3" enable-background="new -947.7 555.4 10 6.3"><style type="text/css">.st0{fill:#aaaaaa;}</style><title>Untitled</title><desc>Created with Sketch.</desc><path class="st0" d="M-942.7 561.7l-5-5 1.4-1.3 3.6 3.6 3.6-3.6 1.4 1.3z"/></svg>') center no-repeat;
+  background-size: 10px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  padding: 10px;
+  width: 20px;
+  pointer-events: none;
+}
+section.form .controls,
+section.form .controls.controls-select select {
+  display: block;
+  padding: 10px;
+  border: solid 1px darken(#fff, 15%);
+  border-radius: 4px;
+  // @include transition(border-color 0.15s ease-in-out);
+  // background-color: darken(#fff, 1%);
+  // box-shadow: inset 0px 2px 2px darken(#fff, 2%);
+  // background-color: color(yellow);
+}
+section.form .controls-check-box {
+  border: 0;
+  border-radius: 0;
+  background-color: transparent;
+  padding: 0;
+  padding-top: 18px;
+  @include user-select(none);
+}
+section.form .controls-check-box label {
+  display: block;
+  vertical-align: middle;
+  line-height: 1.4;
+}
+section.form .controls-check-box label + label {
+  padding-top: .5em;
+}
+section.form .controls-sized {
+  display: inline-block;
+}
+html.support-css-hairlines section.form .controls,
+html.support-css-hairlines section.form .controls.controls-select select {
+  border-color: darken(#fff, 15%);
+  border-width: 0.5px;
+}
+section.form .controls.radio-buttons,
+section.form .controls.file {
+  border: none;
+  border-radius: 0;
+  padding: 0;
+  box-shadow: none !important;
+}
+section.form .controls.controls-select {
+  padding: 0;
+  border: none;
+  box-shadow: none;
+  border-radius: 0;
+}
+section.form .controls img {
+  max-width: 100%;
+}
+section.form .controls img,
+section.form .controls .jcrop-holder,
+section.form .controls .file-preview-link {
+  display: block;
+  margin-bottom: 20px;
+}
+section.form .controls .file-preview-link {
+  color: $mainColor;
+  text-decoration: underline;
+}
+section.form .controls img:only-child {
+  margin-bottom: 0;
+}
+section.form .controls select {
+  // padding: 12px;
+  // background-color: #fff;
+  // border: solid 1px #e8e8e8;
+  // box-shadow: 0 2px 1px rgba(0,0,0,0.02);
+  // border-radius: 5px;
+  width: 100%;
+}
+section.form .controls input[type="text"],
+section.form .controls textarea {
+  width: 100%;
+  line-height: 1.5;
+}
+// section.form .controls input[size] {
+//   width: auto;
+// }
+section.form .controls textarea {
+  resize: none;
+}
+section.form input[type="radio"] {
+  display: none;
+  margin-top: -3px;
+  width: 14px;
+  height: 14px;
+  background-color: #fff;
+  border: 1px solid #ccc;
+  margin-right: 10px;
+  border-radius: 7px;
+}
+section.form input[type="radio"]:checked {
+  border-color: #333;
+  background-color: #333;
+}
+section.form .radio-buttons {
+  padding: 0;
+  overflow: hidden;
+  border-bottom: none;
+  white-space: nowrap;
+}
+section.form .radio-buttons label {
+  width: auto;
+  margin: 10px 0;
+  padding-left: 12px;
+  padding-right: 12px;
+  line-height: 32px;
+  height: 34px;
+  display: inline-block;
+  user-select: none;
+  border: solid 1px #d5d5d5;
+  @include transition(color 0.15s ease-in-out);
+  color: #999;
+  margin-right: -1px;
+}
+section.form .radio-buttons label:first-child {
+  border-radius: 6px 0 0 6px;
+}
+section.form .radio-buttons label:last-child {
+  border-radius: 0 6px 6px 0;
+}
+section.form .radio-buttons label.checked {
+  position: relative;
+  z-index: 1;
+  color: $yesColor;
+  border-color: #41deb6;
+}
+section.form input[type="file"] {
+  width: 100%;
+}
+section.form input[type="file"].ajeh-uploader-simple {
+  position: relative;
+  width: 100%;
+  padding: 10px;
+}
+section.form .actions {
+  padding-top: 18px;
+  position: relative;
+  background-color: #fff;
+}
+section.form .actions button {
+  width: 100%;
+  display: inline-block;
+  // margin-top: 18px;
+  padding: 8px 14px;
+  color: $mainColor;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  font-size: 14px;
+  border-radius: 3px;
+  border: solid 1px $buttonBorder;
+  cursor: pointer;
+}
+@media only screen and (min-width: 0) {
+  // section.form .field {
+  //   display: flex;
+  // }
+  // section.form label:not(.field-label) {
+  //   // flex: 0 0 auto;
+  //   padding: 18px 0;
+  //   margin-right: 20px;
+  //   text-align: right;
+  // }
+  // section.form .field .controls {
+  //   flex: 1 1 auto;
+  // }
+  section.form .field .controls.radio-buttons {
+    overflow: visible;
+  }
+  section.form .field .controls.radio-buttons label {
+    margin-top: -5px;
+  }
+}
+@media only screen and (max-width: 100000px) {
+  section.form .field {
+    display: block;
+  }
+  // section.form label:not(.field-label) {
+  //   display: inline-block;
+  //   margin-right: 0;
+  //   padding-bottom: 13px;
+  //   text-align: left;
+  // }
+  section.form fieldset legend span {
+    margin-left: 0 !important;
+  }
+}
+@media only screen and (max-width: 320px) {
+  section.form form {
+    padding: 0 20px;
+  }
+  section.form fieldset legend {
+    font-size: 13px;
+  }
+}
+
+.nested-fields .field {
+  @include transition(all 0.15s ease-in-out);
+  @include transform(translateZ(0));
+}
+
+.nested-fields.remove .field {
+  opacity: 0.5;
+  @include filter(grayscale(1));
+}
+.hint {
+  margin-top: 20px;
+  font-size: 16px;
+  color: #888;
+}
+
+.hint:before {
+  // content: '🚩 Hint 🚩';
+  content: 'Hint:';
+  font-weight: 500;
+  text-transform: uppercase;
+  font-size: 13px;
+  position: relative;
+  top: -1px;
+  display: inline-block;
+  margin-right: 5px;
+}
+
+.controls-prefix,
+.controls-suffix {
+  color: #777;
+}
+
+.controls-prefix {
+  padding-right: 10px;
+}
+
+// [data-prefix],
+// [data-suffix] {
+//   display: inline-block;
+//   position: relative;
+// }
+
+// [data-prefix]:before,
+// [data-suffix]:before {
+//   position: absolute;
+//   bottom: 0;
+//   padding: .75em;
+//   border: solid 1px transparent;
+//   color: #aaa;
+//   pointer-events: none;
+// }
+
+// [data-prefix]:before {
+//   content: attr(data-prefix);
+//   left: 0;
+// }
+
+// [data-suffix]:before {
+//   content: attr(data-suffix);
+//   right: 0;
+// }
+
+// [data-prefix] input[type=text],
+// [data-prefix] textarea {
+//   padding-left: 1.5em;
+// }
+
+// [data-suffix] input[type=text],
+// [data-suffix] textarea {
+//   padding-right: 1.5em;
+// }
+
+// .controls-checkboxes {
+//   @include d($color: red, $offset: 0px);
+// }
+
+.controls-checkboxes input {
+  vertical-align: top;
+  margin-right: 1em;
+}
+
+.controls-checkboxes label {
+  display: block;
+}
+
+.controls-checkboxes label + label {
+  padding-top: 10px;
+}
+
+.field-hint {
+  display: block;
+  margin-top: 14px;
+  font-size: 14px;
+  color: darken(white, 50%);
+}
+
+.field-hint:before {
+  content: 'Hint: ';
+  font-weight: 400;
+}
+
+.field-hint b {
+  font-weight: 400;
+}
+
+section.form .google-maps-field .controls {
+  padding: 0;
+  overflow: hidden;
+}
+
+section.form .google-maps-field .controls input {
+  padding: 10px;
+}
+
+section.form .controls.controls-wysiwyg {
+  padding: 0;
+  overflow: hidden;
+}
+
+section.form .rome-datetime input,
+section.form .rome-date input {
+  display: none;
+}
+
+section.form .rome-datetime .controls,
+section.form .rome-date .controls {
+  display: inline-block;
+}
+
+section.form .controls-flex {
+  @include display(flex);
+  @include flex-direction(row);
+  @include align-items(center);
+}
+
+section.form .controls-flex.controls-sized {
+  @include display(inline-flex);
+}
+
+section.form .field .controls.controls-datetime-select select {
+  display: inline-block;
+  width: auto;
+}

@@ -1,0 +1,11 @@
+section.form
+  = form_for [ :admin, @<%= singular_table_name(false) %> ] do |f|
+    - if @<%= singular_table_name(false) %>.errors.any?
+      #error_explanation
+        h2 = "#{pluralize(@<%= singular_table_name(false) %>.errors.count, "error")} prohibited this <%= singular_table_name(false) %> from being saved:"
+        ul
+          - @<%= singular_table_name(false) %>.errors.full_messages.each do |message|
+            li = message
+<% model_attributes.each do |attribute| -%>
+    = f.field :<%= attribute.name %>
+<% end -%>
