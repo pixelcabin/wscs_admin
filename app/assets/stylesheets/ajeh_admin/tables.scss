@@ -6,6 +6,10 @@ section.tabular header {
   margin-bottom: 20px;
   padding: 0 30px 10px;
 }
+section.tabular.compact header {
+  display: inline-block;
+  padding-right: 0;
+}
 section.tabular header:before {
   content: '';
   position: absolute;
@@ -44,6 +48,9 @@ section.tabular header a {
 }
 .table-wrapper > table {
   width: 100%;
+}
+section.tabular.compact .table-wrapper > table {
+  max-width: 100%;
 }
 .table-wrapper > table th {
   position: relative;
