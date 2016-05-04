@@ -81,6 +81,9 @@ section.tabular.compact .table-wrapper > table {
 .table-wrapper > table th:last-child {
   padding-right: 30px;
 }
+section.tabular.compact .table-wrapper > table th:last-child {
+  padding-right: 0px;
+}
 .table-wrapper > table th:first-child:before {
   left: 30px;
 }
@@ -107,6 +110,9 @@ section.tabular.compact .table-wrapper > table {
 }
 .table-wrapper > table td:last-child {
   padding-right: 30px;
+}
+section.tabular.compact .table-wrapper > table td:last-child {
+  padding-right: 0px;
 }
 .table-wrapper > table td:first-child:before {
   left: 30px;
