@@ -1,5 +1,18 @@
 module AjehAdmin
   module ApplicationHelper
+    def ajeh_pagescript
+      @pagescript.to_s.camelize(:lower)
+    end
+
+    def ajeh_link_to(text, url=nil, options={})
+      highlights_on = options.delete(:highlights_on)
+      if highlights_on
+        matches = request.path.match(highlights_on)
+        html_class = matches ? 'selected' : nil
+      end
+      link_to(text, url, class: html_class, data: { text: text })
+    end
+
     def form_submit_link(text='Save')
       content_tag :a, %(<span class="icon">&#xe802;</span><span class="string">#{text}</span>).html_safe, class: 'form-submit'
     end
