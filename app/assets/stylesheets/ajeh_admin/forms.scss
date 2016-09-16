@@ -1,4 +1,4 @@
-input[type="text"],
+finput[type="text"],
 input[type="password"],
 input[type="file"],
 button,
@@ -173,7 +173,7 @@ section.form .controls.controls-select select {
   border: solid 1px darken(#fff, 15%);
   border-radius: 4px;
   // @include transition(border-color 0.15s ease-in-out);
-  // background-color: darken(#fff, 1%);
+  background-color: $fieldBackground;
   // box-shadow: inset 0px 2px 2px darken(#fff, 2%);
   // background-color: color(yellow);
 }

@@ -1,5 +1,4 @@
-@include font-face('gotham', '/fonts/Gotham-Medium', $weight: 500, $style: normal);
-@include font-face('gotham', '/fonts/Gotham-Book', $weight: 400, $style: normal);
-@include font-face('gotham', '/fonts/Gotham-Light', $weight: 300, $style: normal);
-@include font-face('ajeh-cms', '/fonts/ajeh-cms', $weight: normal, $style: normal);
-@include font-face('nbl', '/fonts/nbl', $weight: 300, $style: normal);
+@include font-face('gotham', 'Gotham-Medium', $weight: 500, $style: normal, $asset-pipeline: true);
+@include font-face('gotham', 'Gotham-Book', $weight: 400, $style: normal, $asset-pipeline: true);
+@include font-face('gotham', 'Gotham-Light', $weight: 300, $style: normal, $asset-pipeline: true);
+@include font-face('ajeh-cms', 'ajeh-cms', $weight: normal, $style: normal, $asset-pipeline: true);

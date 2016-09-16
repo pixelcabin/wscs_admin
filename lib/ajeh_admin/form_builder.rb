@@ -6,10 +6,14 @@ module AjehAdmin
       t = @template
       object = @object
       object_name = @object_name
+      fields_for = object_name =~ %r{(?<=\[)(.+)(?=\])}
       bc = t.capture(&block) if block_given?
+      locale = options.delete(:locale) { nil }
+      unlocalized_attribute = attribute
+      attribute = [unlocalized_attribute, locale.to_s].join('_') if locale
 
       translation_key = "helpers.label.#{object_name}.#{attribute}"
-      default_translation = attribute.to_s.humanize.titlecase
+      default_translation = unlocalized_attribute.to_s.humanize.titlecase
       translation = I18n.t(translation_key, default: default_translation)
       translation.gsub!(/\band\b/i, 'and')
       translation.gsub!(/\bpdf\b/i, 'PDF')

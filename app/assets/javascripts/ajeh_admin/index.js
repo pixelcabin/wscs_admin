@@ -27,5 +27,4 @@
 //= require ./ajehcms.upload-button
 //= require ./redactor
 //= require ./don
-//= require ./pagescripts
 //= require ./master

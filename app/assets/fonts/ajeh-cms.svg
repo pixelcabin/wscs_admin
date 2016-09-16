@@ -1,0 +1,17 @@
+<?xml version="1.0" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg xmlns="http://www.w3.org/2000/svg">
+<metadata>Copyright (C) 2013 by original authors @ fontello.com</metadata>
+<defs>
+<font id="ajeh-cms" horiz-adv-x="1000" >
+<font-face font-family="ajeh-cms" font-weight="400" font-stretch="normal" units-per-em="1000" ascent="850" descent="-150" />
+<missing-glyph horiz-adv-x="1000" />
+<glyph glyph-name="plus" unicode="&#xe801;" d="m833 392h-291v291c0 23-19 42-42 42s-42-19-42-42v-291h-291c-23 0-42-19-42-42s19-42 42-42h291v-291c0-23 19-42 42-42s42 19 42 42v291h291c23 0 42 19 42 42s-19 42-42 42z" horiz-adv-x="1000" />
+<glyph glyph-name="tick" unicode="&#xe802;" d="m500 850c-276 0-500-224-500-500s224-500 500-500s500 224 500 500s-224 500-500 500z m243-383l-273-315c0 0 0 0 0 0c0 0 0 0 0 0c-15-17-42-19-59-4l-126 110c-17 14-19 41-4 58c15 18 41 20 59 5l94-83l246 283c15 18 42 20 59 5c18-16 19-42 4-59z" horiz-adv-x="1000" />
+<glyph glyph-name="x" unicode="&#xe803;" d="m545 350l265 265c17 17 17 43 0 59s-42 16-59 0l-265-265l-265 265c-16 16-43 16-59 0s-16-42 0-59l265-265l-265-265c-16-16-16-43 0-59c8-8 19-12 30-12s21 4 29 12l265 265l265-265c8-8 19-12 30-12s21 4 29 12c17 16 17 43 0 59l-265 265z" horiz-adv-x="1000" />
+<glyph glyph-name="move" unicode="&#xe804;" d="m958 392h-416v235l104-104c8-8 18-12 29-12s21 4 30 12c16 17 16 43 0 59l-175 175c-17 17-43 17-59 0l-175-175c-17-16-17-42 0-59c8-8 18-12 29-12s21 4 29 12l104 104v-235h-416c-23 0-42-19-42-42s19-42 42-42h416v-235l-104 104c-16 16-42 16-58 0s-17-43 0-59l175-175c8-9 18-13 29-13s21 4 30 13l175 175c16 16 16 42 0 59s-43 16-59 0l-104-104v235h416c23 0 42 19 42 42s-19 42-42 42z" horiz-adv-x="1000" />
+<glyph glyph-name="back" unicode="&#xe805;" d="m687 94l-256 256l251 251c16 17 16 43 0 59s-43 16-59 0l-281-280c-16-17-16-43 0-59l286-286c8-8 18-12 29-12s21 4 30 12c16 16 16 43 0 59z" horiz-adv-x="1000" />
+<glyph glyph-name="resize-vertical" unicode="&#xe800;" d="m241 239l0-167l112 0l-167-169l-168 169l112 0l0 167l111 0z m-111 223l0 168l-112 0l168 167l167-167l-112 0l0-168l-111 0z" horiz-adv-x="370" />
+</font>
+</defs>
+</svg>

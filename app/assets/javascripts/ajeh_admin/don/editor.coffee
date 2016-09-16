@@ -149,7 +149,9 @@ class don.Editor
   _updateInput: ->
     @jqEl.val this.serializeAsJson()
   _bindEvents: ->
+    return if @jqForm.data('don')?
+    @jqForm.data('don', true)
     @jqForm.on 'submit.don', (e) =>
       e.preventDefault()
-      this._updateInput()
+      instance._updateInput() for instance in don._instances
       @jqForm.off('.don').trigger('submit')
