@@ -17,10 +17,16 @@ module AjehAdmin
       content_tag :a, %(<span class="icon">&#xe802;</span><span class="string">#{text}</span>).html_safe, class: 'form-submit'
     end
 
-    def destroy_button(record, name=nil)
+    def destroy_button(record, options={})
+      if options.is_a?(String)
+        name = options
+        options = {}
+      else
+        name = options.fetch(:name) { nil }
+      end
       record_name = name || record.class.model_name.singular.humanize
-      # path = send(path_sym, record)
-      path = url_for([:admin, record])
+      url = options.fetch(:url) { nil }
+      path = url || url_for([:admin, record])
       button_to "Delete", path, method: :delete, form_class: 'button_to destroy-form', data: { confirm: "Are you sure you want to delete this #{record_name.downcase}?" }
     end
   end
