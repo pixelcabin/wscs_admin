@@ -54,13 +54,18 @@ html.unauthenticated svg {
   margin-bottom: 30px;
 }
 html.unauthenticated main {
-  padding: 30px 0;
   width: 100%;
   max-width: 400px;
-  background-color: #fff;
 }
 html.unauthenticated .field-label {
   display: none !important;
+}
+html.unauthenticated .controls-text-field {
+  border-color: #fff;
+  background-color: #fff;
+}
+html.unauthenticated section.form .actions {
+  background-color: none;
 }
 a {
   text-decoration: none;
@@ -206,5 +211,16 @@ html.unauthenticated section.form .controls-check-box {
   padding-top: 0;
 }
 html.unauthenticated section.form .actions button {
+  padding: 14px;
   color: #444;
+  background-color: #fff;
+  border-color: #fff;
+}
+html.unauthenticated section.form .controls,
+html.unauthenticated section.form .controls.controls-select select {
+  background-color: #fff;
+  border-color: #fff !important;
+}
+html.unauthenticated section.form .controls-check-box {
+  justify-content: center;
 }
