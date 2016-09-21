@@ -210,6 +210,9 @@ html.unauthenticated body > * {
 html.unauthenticated section.form .controls-check-box {
   padding-top: 0;
 }
+html.unauthenticated section.form .actions {
+  background-color: transparent;
+}
 html.unauthenticated section.form .actions button {
   padding: 14px;
   color: #444;
@@ -223,4 +226,6 @@ html.unauthenticated section.form .controls.controls-select select {
 }
 html.unauthenticated section.form .controls-check-box {
   justify-content: center;
+  border: 0;
+  background-color: transparent;
 }
