@@ -22,9 +22,9 @@
   @include align-items(center);
   line-height: normal;
 }
-.flash.notice {
+.flash.flash--notice {
   background-color: rgba(0,191,143,0.96);
 }
-.flash.alert {
+.flash.flash--alert {
   background-color: rgba(220,20,60,0.96);
 }

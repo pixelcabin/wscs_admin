@@ -1,0 +1,7 @@
+section.form
+  = form_for @user, url: admin_session_path, method: :post, builder: AjehAdmin::FormBuilder do |f|
+    = f.field :email, as: :text_field, input: { autofocus: true }
+    = f.field :password, as: :password_field
+    = f.field :remember_me, as: :check_box, required: false
+    .actions
+      = f.button 'Log in'

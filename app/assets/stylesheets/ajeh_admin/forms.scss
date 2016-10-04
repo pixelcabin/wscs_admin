@@ -126,10 +126,10 @@ section.form .field-label {
   padding: 14px 0 10px;
   white-space: nowrap;
   @include transition(color 0.1s ease-in-out);
-  text-transform: uppercase;
-  font-size: 14px;
+  // text-transform: uppercase;
+  font-size: 15px;
   color: #aaa;
-  letter-spacing: 0.04em;
+  // letter-spacing: 0.04em;
 }
 
 section.form .field:first-of-type .field-label {

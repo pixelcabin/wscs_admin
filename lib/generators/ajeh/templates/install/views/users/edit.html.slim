@@ -1,0 +1,7 @@
+- content_for :page_header do
+  h1 Edit User
+  = destroy_button @user
+- content_for :page_footer do
+  = link_to 'Cancel', admin_users_path
+  = form_submit_link
+== render 'form'

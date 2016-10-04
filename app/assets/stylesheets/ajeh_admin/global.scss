@@ -229,3 +229,20 @@ html.unauthenticated section.form .controls-check-box {
   border: 0;
   background-color: transparent;
 }
+
+.nobreak {
+  display: inline !important;
+  white-space: nowrap;
+}
+
+a[href^="mailto:"],
+.table-wrapper a[href^="mailto:"] {
+  color: inherit;
+  border-bottom: 1px solid transparent;
+}
+
+a[href^="mailto:"]:hover,
+.table-wrapper a[href^="mailto:"]:hover {
+  color: #2196F3;
+  border-bottom-color: #2196F3;
+}

@@ -87,6 +87,12 @@ section.tabular.compact .table-wrapper > table th:last-child {
 .table-wrapper > table th:first-child:before {
   left: 30px;
 }
+.table-wrapper > table th.center {
+  text-align: center;
+}
+.table-wrapper > table th.right {
+  text-align: right;
+}
 .table-wrapper > table td {
   position: relative;
   padding: 18px 18px 18px 0;
@@ -131,6 +137,22 @@ section.tabular.compact .table-wrapper > table td:last-child {
   font-size: 16px;
   color: #888;
 }
+.table-wrapper > table tr.checkbox {
+  cursor: pointer;
+}
+.table-wrapper > table tr.checkbox td {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+}
+.table-wrapper > table td.checkbox {
+  -webkit-user-select: none;
+     -moz-user-select: none;
+      -ms-user-select: none;
+          user-select: none;
+  cursor: pointer;
+}
 .table-wrapper > table td.tiny {
   color: #888;
   width: 1px;
@@ -139,6 +161,9 @@ section.tabular.compact .table-wrapper > table td:last-child {
 .table-wrapper > table td.nowrap {
   white-space: nowrap;
 }
+.table-wrapper > table td.center {
+  text-align: center;
+}
 .table-wrapper > table td.right {
   text-align: right;
 }
@@ -146,6 +171,11 @@ section.tabular.compact .table-wrapper > table td:last-child {
 .table-wrapper > table td.squeeze {
   width: 1px;
   white-space: nowrap;
+}
+.table-wrapper > table td.lightsqueeze {
+  width: 1px;
+  white-space: nowrap;
+  padding-right: 18px * 2;
 }
 .table-wrapper > table td.draft {
   color: #bf616a;

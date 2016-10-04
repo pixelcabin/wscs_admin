@@ -171,3 +171,9 @@ html.support-css-hairlines .redactor-toolbar {
 .redactor-editor cite {
   font-size: 0.8em;
 }
+
+ul.redactor-toolbar.toolbar-fixed-box {
+  width: 100%;
+  top: 0;
+  left: 0;
+}

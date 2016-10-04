@@ -1,0 +1,6 @@
+- content_for :page_header do
+  h1 Add User
+- content_for :page_footer do
+  = link_to 'Cancel', admin_users_path
+  = form_submit_link
+== render 'form'

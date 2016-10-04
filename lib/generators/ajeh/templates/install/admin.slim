@@ -1,0 +1,31 @@
+doctype html
+html
+  head
+    title CMS
+    meta name="viewport" content="width = device-width, initial-scale = 1, minimum-scale = 1, maximum-scale = 1, user-scalable = no"
+    = stylesheet_link_tag 'ajeh_admin', 'admin', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'ajeh_admin', 'admin', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body data-ajeh-pagescript=(ajeh_pagescript)
+    header#header
+      nav.header-nav
+        = ajeh_link_to 'Dashboard', admin_root_path, highlights_on: %r(/admin$)
+        span.header-nav__header Pages
+        span.header-nav__header Models
+        span.header-nav__header Partials
+        span.header-nav__header Admin
+        = ajeh_link_to 'Users', admin_users_path, highlights_on: %r(/admin/users)
+        - if current_user.present?
+          #session
+            = form_tag admin_session_path, method: :delete do
+              = button_tag 'Log out'
+    - if content_for?(:breadcrumb)
+      .breadcrumb
+        = yield :breadcrumb
+    header#page-header class=('with-breadcrumb' if content_for?(:breadcrumb))
+      = yield :page_header
+    - flash.each do |k,v|
+      div.flash class=("flash--#{k}") = v
+    #page class=('no-footer' unless content_for?(:page_footer)) class=('with-breadcrumb' if content_for?(:breadcrumb))
+      = yield
+    <footer id="page-footer">#{yield :page_footer}</footer>

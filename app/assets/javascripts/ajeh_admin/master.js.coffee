@@ -151,7 +151,8 @@ ready = ->
       o:
         duration: 500
         easing: [ 500, 20 ]
-        complete: -> this.remove()
+        complete: ->
+          $(this).remove() if this?
   $('.flash').on 'click', -> removeFlash(this)
   ajeh._.delay 5000, -> removeFlash('.flash')
 
@@ -310,8 +311,8 @@ ready = ->
       if $(this).val() is fieldVal then jqField.show() else jqField.hide()
     if jqToggleField.filter(':checked').val() is fieldVal then jqField.show() else jqField.hide()
 
-$ -> ready()
-# $(document).on 'turbolinks:load', ready
+# $ -> ready()
+$(document).on 'turbolinks:load', ready
 # $(document).on 'page:load', ->
 #   ajeh._.delay 1, -> $('#page').scrollTop(0)
 

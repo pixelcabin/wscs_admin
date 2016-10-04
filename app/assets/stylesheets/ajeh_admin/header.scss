@@ -98,7 +98,7 @@
   padding-left: 25px;
   margin-left: -25px;
   margin-right: -25px;
-  font-size: 14px;
+  font-size: 13px;
   font-weight: 500;
   text-transform: uppercase;
   letter-spacing: 0.05em;
@@ -279,7 +279,7 @@ html.support-css-hairlines #page-footer {
   cursor: pointer;
 }
 #page-header .button_to.destroy-form {
-  color: #dc143c;
+  color: $dangerColor;
 }
 
 #page-footer a {
@@ -332,6 +332,64 @@ html.support-css-hairlines #page-footer {
   display: none;
 }
 
-header#header {
-  box-shadow: inset -6px 0 4px -4px darken(#eee,2%);
+// header#header {
+//   box-shadow: inset -6px 0 4px -4px darken(#eee,2%);
+// }
+
+#header {
+  display: flex;
+  flex-direction: column;
 }
+
+#header > svg {
+  flex: 0 0 auto;
+}
+
+.header-nav {
+  display: flex;
+  flex-direction: column;
+  flex: 1 0 auto;
+  // @include d($color: red, $offset: 0px);
+}
+
+#session {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  // @include d($color: red, $offset: 0px);
+}
+
+.header-nav .sub {
+  margin: 0 -25px;
+  color: $navSubColor;
+  background-color: $navSubBackground;
+  // box-shadow: inset 0px 3px 5px darken(#eee,8%);
+}
+
+.header-nav .sub a {
+  position: relative;
+  margin: 0;
+  background-color: transparent !important;
+}
+
+.header-nav .sub a + a:after {
+  content: '';
+  position: absolute;
+  left: 25px;
+  top: 0;
+  right: 0;
+  height: 1px;
+  background-color: lighten($navSubBackground, 6%);
+  html.support-css-hairlines & {
+    height: 0.5px;
+  }
+}
+
+.header-nav .sub a.selected {
+  font-weight: 400;
+}
+
+// .header-nav .sub a:hover {
+//   color: #333f48;
+// }

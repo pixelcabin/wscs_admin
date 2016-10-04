@@ -1,0 +1,11 @@
+- content_for :page_header do
+  h1 Users
+  = link_to 'Add User', new_admin_user_path
+section.tabular
+  .table-wrapper
+    table
+      tbody
+        - @users.each do |user|
+          tr data-action=(edit_admin_user_path(user))
+            td.squeeze = image_tag user.gravatar_image, width: 40, height: 40
+            td = user.email

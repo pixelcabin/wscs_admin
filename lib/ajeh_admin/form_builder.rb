@@ -56,7 +56,7 @@ module AjehAdmin
         html << label(attribute, label, class: 'field-label')
         choices = input_options.delete(:choices)
         html << t.content_tag(:div, input_wrapper_options) do
-          send(as, attribute, choices, input_options)
+          send(as, attribute, choices, {}, input_options)
         end
       elsif as == :check_box
         html << t.content_tag(:div, input_wrapper_options) do
