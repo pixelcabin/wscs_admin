@@ -12,6 +12,7 @@ ready = ->
     testElem = document.createElement('div')
     testElem.style.border = '.5px solid transparent'
     document.body.appendChild(testElem)
+    console.log 'testElem.offsetHeight', testElem.offsetHeight
     if testElem.offsetHeight is 1
       document.querySelector('html').classList.add('support-css-hairlines');
     document.body.removeChild(testElem)
@@ -311,8 +312,11 @@ ready = ->
       if $(this).val() is fieldVal then jqField.show() else jqField.hide()
     if jqToggleField.filter(':checked').val() is fieldVal then jqField.show() else jqField.hide()
 
-# $ -> ready()
-$(document).on 'turbolinks:load', ready
+if window.Turbolinks?
+  $(document).on 'turbolinks:load', ready
+else
+  $ -> ready()
+
 # $(document).on 'page:load', ->
 #   ajeh._.delay 1, -> $('#page').scrollTop(0)
 
