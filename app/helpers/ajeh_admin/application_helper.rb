@@ -10,7 +10,7 @@ module AjehAdmin
       html_classes << options.delete(:class)
       if highlights_on
         matches = request.path.match(highlights_on)
-        html_classes << 'selected' if matches
+        html_classes << options.fetch(:highlight_class, 'selected') if matches
       end
       link_to(text, url, class: html_classes.join(' '), data: { text: text })
     end
