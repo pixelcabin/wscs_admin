@@ -5,12 +5,14 @@ module AjehAdmin
     end
 
     def ajeh_link_to(text, url=nil, options={})
+      html_classes = []
       highlights_on = options.delete(:highlights_on)
+      html_classes << options.delete(:class)
       if highlights_on
         matches = request.path.match(highlights_on)
-        html_class = matches ? 'selected' : nil
+        html_classes << 'selected' if matches
       end
-      link_to(text, url, class: html_class, data: { text: text })
+      link_to(text, url, class: html_classes.join(' '), data: { text: text })
     end
 
     def form_submit_link(text='Save')
