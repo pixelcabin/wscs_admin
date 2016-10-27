@@ -40,8 +40,8 @@ module Ajeh::Generators
     end
 
     def create_admin_assets
-      FileUtils.touch Rails.root.join('app/assets/admin.coffee')
-      FileUtils.touch Rails.root.join('app/assets/admin.scss')
+      FileUtils.touch Rails.root.join('app/assets/javascripts/admin.coffee')
+      FileUtils.touch Rails.root.join('app/assets/stylesheets/admin.scss')
     end
 
     def create_users
