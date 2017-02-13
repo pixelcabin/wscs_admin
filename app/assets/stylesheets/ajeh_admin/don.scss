@@ -15,8 +15,9 @@
   @include display(flex);
   @include align-items(stretch);
   @include justify-content(center);
+  flex-wrap: wrap;
   background-color: #fff;
-  padding: 10px;
+  padding: 5px 10px;
   border-top: 1px solid darken(#fff, 15%);
 
   font-size: 11px;
@@ -52,6 +53,8 @@
   @include display(flex);
   @include align-items(center);
   cursor: pointer;
+  padding: 5px 0;
+  white-space: nowrap;
 }
 
 .don-toolbar--button:hover {
