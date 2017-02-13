@@ -39,9 +39,10 @@ class don.blocks.Base
     # stringifiedData = JSON.stringify(data)
     # return null if stringifiedData.match(/^({}|\[\]|\"\")$/)
     output =
-      kind: this.constructor::KIND
+      kind: this.constructor.name
       data: data
   init: ->
+    @config = don._.merge(@DEFAULT_CONFIG, @config)
   _init: ->
     this._initDom()
     @jqToolbar.on 'click', "[data-move='up']", =>

@@ -12,6 +12,7 @@ class don.Editor
     @el = el
     @$el = $(el)
     @_id = _.uniqueId('don-editor-')
+    don.log 'Initalizing don', this
     this._init()
     don._instances.push this
     this
@@ -35,7 +36,7 @@ class don.Editor
     unless @config.blocks.length
       for blockKind of don.blocks
         @config.blocks.push blockKind
-    don.log 'Config', @config
+    don.log 'Instance config', @config
   _fetchDomElements: ->
     @jqEl = $(@el)
     @jqForm = @jqEl.parents('form')
@@ -50,9 +51,9 @@ class don.Editor
     for blockKind of don.blocks
       continue if blockKind is 'Base'
       continue if @config.blocks? and blockKind not in @config.blocks
+      don.log "Block enabled: #{blockKind}"
       title = don.blocks[blockKind]::TITLE
-      kind = don.blocks[blockKind]::KIND
-      buttonHtml = don._.template(@TOOLBAR_BUTTON_HTML, kind: kind, title: title)
+      buttonHtml = don._.template(@TOOLBAR_BUTTON_HTML, kind: blockKind, title: title)
       @jqBlocksToolbar.append(buttonHtml)
     @jqBlocksToolbar.find('.toggle').on 'mouseenter', -> $(this).parent().addClass('open')
     @jqBlocksToolbar.on 'mouseleave', -> $(this).removeClass('open')
@@ -68,23 +69,22 @@ class don.Editor
     # Load data from original element
     elVal = @jqEl.val()
     if elVal? and !elVal.match(/^\s*?$/) and elVal != '[]' and elVal != 'null'
-      don.log 'Loading blocks data from JSON', elVal
       blocksData = JSON.parse(elVal)
+      don.log 'Loading blocks data from JSON', blocksData
       for blockData in blocksData
         continue if _.isEmpty(blockData)
         kind = blockData.kind
         data = blockData.data
         this._addBlock(kind, data: data)
     else
-      don.log 'No blocks data found, creating the default block'
+      don.log "No blocks data to load. Creating the default block: #{@config.defaultBlock}"
       this._addBlock(@config.defaultBlock)
     @blocksInitialized = true
   _addBlock: (blockKind, options={}) ->
     try
-      blockKind = _.string.classify(blockKind)
       if blockKind not in @config.blocks
-        don.log "Default block not available: #{blockKind}"
-        blockKind = @config.blocks[0]
+        don.log "Block not available: #{blockKind}. Using the default block: #{@config.defaultBlock}"
+        blockKind = @config.defaultBlock
       unless don.blocks[blockKind]?
         don.log "Failed to create a block of kind: #{blockKind}"
         return
