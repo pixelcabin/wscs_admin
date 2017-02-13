@@ -85,7 +85,10 @@
 }
 
 .don-block + .don-block {
-  border-top: 1px solid #eee;
+  border-top: 1px solid #d9d9d9;
+  html.support-css-hairlines & {
+    border-width: 0.5px;
+  }
 }
 
 .don-block--header,
