@@ -26,6 +26,29 @@ don._.move = (element, array, direction) ->
   else if direction is 'down'
     toIndex = fromIndex + 1
   array.splice(toIndex, 0, array.splice(fromIndex, 1)[0])
+don._.moveWithAnimation = (moveEl, options) ->
+  duration = if options.duration? then options.duration else 200
+  $moveEl = $(moveEl)
+  direction = $moveEl.data('move')
+  jqCurrent = $moveEl.parents(options.itemSelector)
+  if direction is 'down'
+    jqNext = jqCurrent.next(options.itemSelector)
+    return if jqNext.length is 0
+    offset = jqNext.offset().top - jqCurrent.offset().top
+    jqCurrent.velocity translateY: [jqNext.outerHeight(), 0], duration
+    jqNext.velocity translateY: [offset * -1, 0], duration, ->
+      jqCurrent.insertAfter(jqNext)
+      jqCurrent.removeAttr('style')
+      jqNext.removeAttr('style')
+  else if direction is 'up'
+    jqPrevious = jqCurrent.prev(options.itemSelector)
+    return if jqPrevious.length is 0
+    offset = jqPrevious.offset().top - jqCurrent.offset().top
+    jqCurrent.velocity translateY: [offset,0], duration
+    jqPrevious.velocity translateY: [jqCurrent.outerHeight(),0], duration, ->
+      jqCurrent.insertBefore(jqPrevious)
+      jqCurrent.removeAttr('style')
+      jqPrevious.removeAttr('style')
 don._.stringHash = (string) ->
   hash = 0
   return hash if string.length is 0
