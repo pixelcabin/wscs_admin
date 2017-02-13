@@ -1,6 +1,6 @@
 window.don ?= {}
 
-don.DEBUG = true
+don.DEBUG = false
 don.VERSION = '0.0.1'
 don.URL_REGEX = /^(?:([A-Za-z]+):)?(\/{0,3})([0-9.\-A-Za-z]+)(?::(\d+))?(?:\/([^?#]*))?(?:\?([^#]*))?(?:#(.*))?$/
 don.URL_API = if URL? then URL else if webkitURL? then webkitURL else null
