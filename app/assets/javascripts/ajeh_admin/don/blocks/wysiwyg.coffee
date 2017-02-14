@@ -1,6 +1,6 @@
 class don.blocks.Wysiwyg extends don.blocks.Base
   TITLE: 'Text'
-  KIND: 'wysiwyg'
+  KIND: 'Wysiwyg'
   HTML: '<textarea placeholder="Text"></textarea>'
   init: ->
     @jqTextarea = @jqEl.find('textarea')

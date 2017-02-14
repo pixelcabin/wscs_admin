@@ -1,6 +1,6 @@
 class don.blocks.Photo extends don.blocks.Base
   TITLE: 'Single Photo'
-  KIND: 'photo'
+  KIND: 'Photo'
   HTML: '''
     <div class="don-block__photo--preview"></div>
     <input class="don-block__photo--captioninput" type="text" placeholder="Caption">

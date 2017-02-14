@@ -1,6 +1,6 @@
 class don.blocks.Embed extends don.blocks.Base
   TITLE: 'Video Embed'
-  KIND: 'embed'
+  KIND: 'Embed'
   HTML: '''
     <div class="don-block__embed--preview"><canvas></canvas></div>
     <input class="don-block__embed--captioninput" type="text" placeholder="Caption">

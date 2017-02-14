@@ -1,6 +1,6 @@
 class don.blocks.Gallery extends don.blocks.Base
   TITLE: 'Photo Gallery'
-  KIND: 'gallery'
+  KIND: 'Gallery'
   HTML: '''
     <div class="don-block__gallery--items"></div>
   '''
