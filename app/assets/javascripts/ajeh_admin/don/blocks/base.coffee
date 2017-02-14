@@ -39,7 +39,7 @@ class don.blocks.Base
     # stringifiedData = JSON.stringify(data)
     # return null if stringifiedData.match(/^({}|\[\]|\"\")$/)
     output =
-      kind: this.constructor.name
+      kind: this.constructor::KIND
       data: data
   init: ->
     @config = don._.merge(@DEFAULT_CONFIG, @config)
