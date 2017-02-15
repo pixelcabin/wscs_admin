@@ -58,7 +58,7 @@ class don.blocks.Base
       data
   _initDom: ->
     htmlWrapper = don._.template @WRAPPER_HTML,
-      kind: @KIND
+      kind: don._.underscored(@KIND)
       id: @_id
       title: @TITLE
       yield: @HTML
