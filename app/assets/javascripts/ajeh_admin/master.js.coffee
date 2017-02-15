@@ -195,6 +195,8 @@ ready = ->
     romeInstance = rome romeInput,
       initialValue: $input.val()
       timeInterval: 60 * 15
+      timeFormat: 'h:mma'
+      weekStart: 1
     $input.data('rome', romeInstance)
     rome(romeInput).on 'data', (value) ->
       $input.val(value)
@@ -209,6 +211,7 @@ ready = ->
     romeOptions = $.extend inputRomeOptions,
       initialValue: $input.val()
       time: false
+      weekStart: 1
     rome(romeInput, romeOptions)
     rome(romeInput).on 'data', (value) ->
       $input.val(value)
