@@ -59,3 +59,11 @@ don._.stringHash = (string) ->
   hash
 don._.underscored = (string) ->
   string.replace(/([a-z\d])([A-Z]+)/g, '$1_$2').replace(/[-\s]+/g, '_').toLowerCase()
+don._.imageUploader = (el, options={}) ->
+  onChoose = options.onChoose || ->
+  onUpload = options.onUpload || ->
+  $(el).on 'change', (e) ->
+    for file in e.currentTarget.files
+      preview = don._.imageURL(file)
+      onChoose.call(this, preview)
+      new don.FileUpload file, done: (response) -> onUpload.call(this, response)

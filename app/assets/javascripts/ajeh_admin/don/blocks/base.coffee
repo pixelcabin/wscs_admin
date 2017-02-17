@@ -24,11 +24,11 @@ class don.blocks.Base
       @editor = options.editor
       @config = options.config
       this._init()
-      this._initData(options.data)
       this.init()
+      this._initData(options.data)
     catch error
-      console.log error
-      don.log 'Error!'
+      don.error error
+  init: ->
   teardown: ->
   render: ->
     don._.delay 8, => this.onRender()
@@ -36,53 +36,54 @@ class don.blocks.Base
   onRender: ->
   serialize: (data) ->
     return null if _.isEmpty(data)
-    # stringifiedData = JSON.stringify(data)
-    # return null if stringifiedData.match(/^({}|\[\]|\"\")$/)
     output =
       kind: this.constructor::KIND
       data: data
-  init: ->
-    @config = don._.merge(@DEFAULT_CONFIG, @config)
+  setPosition: (position) ->
+    @position = position
+    this.refresh()
+  refresh: ->
+    this._setTitle()
+    @jqRootEl.find('.don-block--title').text(@title) if @jqRootEl?
+  _setTitle: ->
+    if @editor.config.fixedLength
+      @title = "#{@TITLE} #{@position+1}"
+    else
+      @title = @TITLE
   _init: ->
+    @config = don._.merge(@DEFAULT_CONFIG, @config)
+    this._setTitle()
     this._initDom()
     @jqToolbar.on 'click', "[data-move='up']", =>
       @editor.moveBlock(this, 'up')
     @jqToolbar.on 'click', "[data-move='down']", =>
       @editor.moveBlock(this, 'down')
-    # @editor
   _initData: (data) ->
-    return unless data?
     @data = try
-      JSON.parse(data)
+     JSON.parse(data)
     catch error
       data
+    this.loadData()
   _initDom: ->
     htmlWrapper = don._.template @WRAPPER_HTML,
       kind: don._.underscored(@KIND)
       id: @_id
-      title: @TITLE
+      title: @title
       yield: @HTML
     @jqRootEl = $(htmlWrapper)
     @jqToolbar = @jqRootEl.find('.don-block--header')
     @jqEl = @jqRootEl.find('.don-block--inner')
     $jqRemove = @jqRootEl.find('.don-block--remove')
-    $jqConfirmRemove = @jqRootEl.find('.don-block--confirm-remove')
-    $jqConfirmRemove.on 'click', '[data-confirm="yes"]', =>
-      @editor.removeBlock(this)
-    $jqConfirmRemove.on 'click', '[data-confirm="no"]', ->
-      $jqRemove.show()
-      $jqConfirmRemove.hide()
-    $jqRemove.on 'click', =>
-      $jqRemove.hide()
-      $jqConfirmRemove.show()
-  _dataLoading: ->
-    # @jqLoading.addClass('visible')
-    # jqInput.hide() for jqInput in @inputs
-  _dataLoaded: ->
-    # @jqLoading.removeClass('visible')
-  _dataNotLoaded: ->
-    # @jqLoading.removeClass('visible')
-    # jqInput.show().val('') for jqInput in @inputs
-    # @jqLoading.transition opacity: 0, duration: 150, -> this.addClass('hidden')
-  afterRender: ->
+    if @editor.config.fixedLength?
+      $jqRemove.remove()
+    else
+      $jqConfirmRemove = @jqRootEl.find('.don-block--confirm-remove')
+      $jqConfirmRemove.on 'click', '[data-confirm="yes"]', =>
+        @editor.removeBlock(this)
+      $jqConfirmRemove.on 'click', '[data-confirm="no"]', ->
+        $jqRemove.show()
+        $jqConfirmRemove.hide()
+      $jqRemove.on 'click', =>
+        $jqRemove.hide()
+        $jqConfirmRemove.show()
   loadData: ->

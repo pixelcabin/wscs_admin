@@ -8,6 +8,7 @@ class don.Editor
     singleMode: false
     defaultBlock: 'Wysiwyg'
     blocks: []
+    fixedLength: null
   constructor: (el) ->
     @el = el
     @$el = $(el)
@@ -47,6 +48,8 @@ class don.Editor
     @jqWrapper.addClass('__single_mode') if @config.singleMode
     @jqWrapper.append(@HTML)
     @jqBlocksContainer = @jqWrapper.find('.don-blocks')
+    this._initBlocksToolbarDom() unless @config.fixedLength?
+  _initBlocksToolbarDom: ->
     @jqBlocksToolbar = $(don._.template(@TOOLBAR_HTML))
     for blockKind of don.blocks
       continue if blockKind is 'Base'
@@ -77,16 +80,19 @@ class don.Editor
         data = blockData.data
         this._addBlock(kind, data: data)
     else
-      don.log "No blocks data to load. Creating the default block: #{@config.defaultBlock}"
-      this._addBlock(@config.defaultBlock)
+      don.warn "No blocks data to load. Creating the default block: #{@config.defaultBlock}"
+      if @config.fixedLength?
+        this._addBlock(@config.defaultBlock) for [1..@config.fixedLength]
+      else
+        this._addBlock(@config.defaultBlock)
     @blocksInitialized = true
   _addBlock: (blockKind, options={}) ->
     try
       if blockKind not in @config.blocks
-        don.log "Block not available: #{blockKind}. Using the default block: #{@config.defaultBlock}"
+        don.warn "Block not available: #{blockKind}. Using the default block: #{@config.defaultBlock}"
         blockKind = @config.defaultBlock
       unless don.blocks[blockKind]?
-        don.log "Failed to create a block of kind: #{blockKind}"
+        don.error "Failed to create a block of kind: #{blockKind}"
         return
       don.log "Creating a block of kind: #{blockKind}"
       options =
@@ -95,13 +101,13 @@ class don.Editor
       if @config.blocksConfig? and @config.blocksConfig[blockKind]?
         options.config = @config.blocksConfig[blockKind]
       block = new don.blocks[blockKind] options
+      block.setPosition(@blocks.length)
       jqBlock = block.render()
       animate = options.after? || options.before?
       insertLocation = if options.after then 'after' else if options.before then 'before' else 'after'
       targetBlockEl = options[insertLocation] if options[insertLocation]
     catch error
-      console.log error
-      don.log 'Error adding block'
+      don.error 'Error adding block', error
 
     # jqBlock.css(transformOrigin: 'top left', scale: 0) if animate
     if insertLocation is 'after'
@@ -124,6 +130,7 @@ class don.Editor
     @blocks = _.without(@blocks, blockToRemove)
     blockToRemove.jqRootEl.remove()
     @jqBlocksContainer.attr('data-block-count', @blocks.length)
+    this._setBlockPositions()
   moveBlock: (block, direction) ->
     jqCurrent = block.jqRootEl
     animationTiming = 200
@@ -146,6 +153,9 @@ class don.Editor
         jqCurrent.removeAttr('style')
         jqNext.removeAttr('style')
     don._.move(block, @blocks, direction)
+    this._setBlockPositions()
+  _setBlockPositions: ->
+    block.setPosition(i) for block, i in @blocks
   _updateInput: ->
     @jqEl.val this.serializeAsJson()
   _bindEvents: ->

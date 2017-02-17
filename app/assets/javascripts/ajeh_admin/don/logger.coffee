@@ -3,10 +3,10 @@ don.log = (message...) ->
   don._logger.apply this, message
 don.warn = (message...) ->
   message.unshift('warn')
-  don._logger.apply this, message.unshift('warn')
+  don._logger.apply this, message
 don.error = (message...) ->
   message.unshift('error')
-  don._logger.apply this, message.unshift('error')
+  don._logger.apply this, message
 don._logger = (level, message...) ->
   return unless console? && don.DEBUG
   now = new Date
@@ -20,5 +20,5 @@ don._logger = (level, message...) ->
     console[level]("%cdon #{timestamp}%c#{message[0]}", 'display:inline-block;padding:2px 3px;margin-right:5px;background-color:#F34F4E;color:white;', 'color:black;')
   else
     mainMessage = message.shift()
-    console[level]("%cdon #{timestamp}%c#{mainMessage}:", 'display:inline-block;padding:2px 3px;margin-right:5px;background-color:#F34F4E;color:white;', 'color:black;')
+    console[level]("%cdon #{timestamp}%c▼ #{mainMessage}", 'display:inline-block;padding:2px 3px;margin-right:5px;background-color:#F34F4E;color:white;', 'color:black;')
     console[level](m) for m in message
