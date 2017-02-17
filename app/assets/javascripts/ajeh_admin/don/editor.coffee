@@ -67,7 +67,6 @@ class don.Editor
       this._addBlock(kind)
     @jqBlocksToolbar.appendTo(@jqWrapper)
   _initBlocks: ->
-    @blocksInitialized = false
     @blocks = []
     # Load data from original element
     elVal = @jqEl.val()
@@ -85,7 +84,6 @@ class don.Editor
         this._addBlock(@config.defaultBlock) for [1..@config.fixedLength]
       else
         this._addBlock(@config.defaultBlock)
-    @blocksInitialized = true
   _addBlock: (blockKind, options={}) ->
     try
       if blockKind not in @config.blocks
@@ -102,7 +100,7 @@ class don.Editor
         options.config = @config.blocksConfig[blockKind]
       block = new don.blocks[blockKind] options
       block.setPosition(@blocks.length)
-      jqBlock = block.render()
+      jqBlock = block.toHTML()
       animate = options.after? || options.before?
       insertLocation = if options.after then 'after' else if options.before then 'before' else 'after'
       targetBlockEl = options[insertLocation] if options[insertLocation]
@@ -125,7 +123,7 @@ class don.Editor
     # jqToolbar.appendTo(jqBlock)
     @blocks.push block
     @jqBlocksContainer.attr('data-block-count', @blocks.length)
-    block.afterRender() if @blocksInitialized
+    block.rendered()
   removeBlock: (blockToRemove) ->
     @blocks = _.without(@blocks, blockToRemove)
     blockToRemove.jqRootEl.remove()

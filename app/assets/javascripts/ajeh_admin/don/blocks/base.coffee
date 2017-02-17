@@ -26,13 +26,14 @@ class don.blocks.Base
       this._init()
       this.init()
       this._initData(options.data)
-      don._.delay 8, => this.onRender()
     catch error
       don.error error
   init: ->
   teardown: ->
-  render: ->
-  onRender: ->
+  toHTML: ->
+    @jqRootEl
+  rendered: ->
+    this._onRender()
   serialize: (data) ->
     return null if _.isEmpty(data)
     output =
@@ -44,6 +45,7 @@ class don.blocks.Base
   refresh: ->
     this._setTitle()
     @jqRootEl.find('.don-block--title').text(@title) if @jqRootEl?
+  loadData: ->
   _setTitle: ->
     if @editor.config.fixedLength
       @title = "#{@TITLE} #{@position+1}"
@@ -85,4 +87,4 @@ class don.blocks.Base
       $jqRemove.on 'click', =>
         $jqRemove.hide()
         $jqConfirmRemove.show()
-  loadData: ->
+  _onRender: ->
