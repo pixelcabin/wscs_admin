@@ -4,7 +4,6 @@ class don.blocks.Wysiwyg extends don.blocks.Base
   HTML: '<textarea placeholder="Text"></textarea>'
   init: ->
     @jqTextarea = @jqEl.find('textarea')
-    @jqTextarea.val(@data) if @data?
     @jqTextarea.redactor
       toolbar: true
       buttons: [
@@ -16,7 +15,7 @@ class don.blocks.Wysiwyg extends don.blocks.Base
         'orderedlist'
       ]
       linkTooltip: true
-  afterRender: ->
-    @jqTextarea.redactor('core.getEditor').focus()
+  loadData: ->
+    @jqTextarea.val(@data) if @data?
   serialize: ->
     super @jqTextarea.redactor('code.get')
