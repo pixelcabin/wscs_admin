@@ -16,6 +16,7 @@ class don.blocks.Wysiwyg extends don.blocks.Base
       ]
       linkTooltip: true
   loadData: ->
-    @jqTextarea.val(@data) if @data?
+    return unless @data?
+    @jqTextarea.redactor('code.set', @data)
   serialize: ->
     super @jqTextarea.redactor('code.get')

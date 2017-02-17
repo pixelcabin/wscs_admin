@@ -10,55 +10,6 @@ class don.blocks.Gallery extends don.blocks.Base
     inputHtml = '<input class="don-block__gallery--fileinput" type="file" name="file" multiple="true">'
     @jqItems = @jqEl.find('.don-block__gallery--items')
     @config = don._.merge(@DEFAULT_CONFIG, @config)
-    appendItem = (url, options={}) =>
-      id = if options.id then options.id else null
-      public_id = if options.public_id then options.public_id else null
-      cloudinary = if options.cloudinary then options.cloudinary else null
-      caption = if options.caption then options.caption else ''
-      $item = $ if @config.captions
-        """
-          <div class="don-block__gallery-item" data-id="#{id}" data-public-id="#{public_id}">
-            <div class="don-block__gallery-item--preview">
-              <img class="don-block__gallery-item--img" src="#{url}">
-              <div class="don-block__gallery-item--actions">
-                <span class="don-block__gallery-item--action" data-move="up">↑</span>
-                <span class="don-block__gallery-item--action" data-action="remove">╳</span>
-                <span class="don-block__gallery-item--action" data-move="down">↓</span>
-              </div>
-            </div>
-            <input class="don-block__gallery-item--captioninput" type="text" placeholder="Caption" value="#{caption}">
-          </div>
-        """
-      else
-        """
-          <div class="don-block__gallery-item" data-id="#{id}" data-public-id="#{public_id}">
-            <div class="don-block__gallery-item--preview">
-              <img class="don-block__gallery-item--img" src="#{url}">
-              <div class="don-block__gallery-item--actions">
-                <span class="don-block__gallery-item--action" data-move="up">↑</span>
-                <span class="don-block__gallery-item--action" data-action="remove">╳</span>
-                <span class="don-block__gallery-item--action" data-move="down">↓</span>
-              </div>
-            </div>
-          </div>
-        """
-      @jqItems.append($item)
-      $item.data('cloudinary', JSON.parse(cloudinary))
-      $item
-
-    if @data
-      for item in @data
-        url = if item.public_id?
-          "/uploads/store/#{item.public_id}"
-        else
-          'http://placehold.it/500?text=Image+Failed+To+Upload'
-        if @config.captions
-          appendItem(url, caption: item.caption, public_id: item.public_id, cloudinary: JSON.stringify(item.cloudinary))
-        else
-          appendItem(url, public_id: item.public_id, cloudinary: JSON.stringify(item.cloudinary))
-    else
-      @data = []
-
     animationTiming = 200
 
     @jqEl.on 'click', '[data-action]', ->
@@ -95,7 +46,7 @@ class don.blocks.Gallery extends don.blocks.Base
       for file in e.currentTarget.files
         url = don._.imageURL(file)
         id = don._.stringHash(file.name)
-        jqFile = appendItem(url, id: id)
+        jqFile = this._appendItem(url, id: id)
         that = this
         new don.FileUpload file,
           done: (response) ->
@@ -108,6 +59,20 @@ class don.blocks.Gallery extends don.blocks.Base
     @jqFileInput = $(inputHtml)
     @jqFileInput.appendTo(@jqEl)
     @jqFileInput.on('change', @onInputChange)
+  loadData: ->
+    unless @data?
+      @data = []
+      return
+    for item in @data
+      url = if item.public_id?
+        "/uploads/store/#{item.public_id}"
+      else
+        'http://placehold.it/500?text=Image+Failed+To+Upload'
+      if @config.captions
+        this._appendItem(url, caption: item.caption, public_id: item.public_id, cloudinary: JSON.stringify(item.cloudinary))
+      else
+        this._appendItem(url, public_id: item.public_id, cloudinary: JSON.stringify(item.cloudinary))
+
   serialize: ->
     @data = []
     @jqItems.children().each (i, el) =>
@@ -124,4 +89,38 @@ class don.blocks.Gallery extends don.blocks.Base
           cloudinary: $el.data('cloudinary')
         }
     super @data
-  afterRender: ->
+  _appendItem: (url, options={}) =>
+    id = if options.id then options.id else null
+    public_id = if options.public_id then options.public_id else null
+    cloudinary = if options.cloudinary then options.cloudinary else null
+    caption = if options.caption then options.caption else ''
+    $item = $ if @config.captions
+      """
+        <div class="don-block__gallery-item" data-id="#{id}" data-public-id="#{public_id}">
+          <div class="don-block__gallery-item--preview">
+            <img class="don-block__gallery-item--img" src="#{url}">
+            <div class="don-block__gallery-item--actions">
+              <span class="don-block__gallery-item--action" data-move="up">↑</span>
+              <span class="don-block__gallery-item--action" data-action="remove">╳</span>
+              <span class="don-block__gallery-item--action" data-move="down">↓</span>
+            </div>
+          </div>
+          <input class="don-block__gallery-item--captioninput" type="text" placeholder="Caption" value="#{caption}">
+        </div>
+      """
+    else
+      """
+        <div class="don-block__gallery-item" data-id="#{id}" data-public-id="#{public_id}">
+          <div class="don-block__gallery-item--preview">
+            <img class="don-block__gallery-item--img" src="#{url}">
+            <div class="don-block__gallery-item--actions">
+              <span class="don-block__gallery-item--action" data-move="up">↑</span>
+              <span class="don-block__gallery-item--action" data-action="remove">╳</span>
+              <span class="don-block__gallery-item--action" data-move="down">↓</span>
+            </div>
+          </div>
+        </div>
+      """
+    @jqItems.append($item)
+    $item.data('cloudinary', JSON.parse(cloudinary))
+    $item

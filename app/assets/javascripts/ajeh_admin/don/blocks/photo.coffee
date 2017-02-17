@@ -13,17 +13,23 @@ class don.blocks.Photo extends don.blocks.Base
     @jqFullWidthInput = @jqEl.find('.don-block__photo--fullwidthinput')
     @jqCaptionInput = @jqEl.find('.don-block__photo--captioninput')
     @jqFileInput = @jqEl.find('.don-block__photo--fileinput')
-
-    if @data?
-      url = "/uploads/store/#{@data.id}"
-      @jqImagePreview.append("<img src=\"#{url}\">")
-      @jqFileInput.remove()
-      @jqCaptionInput.val(@data.caption).show()
-      @jqFullWidthInput.prop('checked', @data.fullWidth)
-    else
+    this._bindEvents()
+  loadData: ->
+    unless @data?
       @data = {}
       @jqFullWidthLabel.hide()
       @jqCaptionInput.hide()
+      return
+    url = "/uploads/store/#{@data.id}"
+    @jqImagePreview.append("<img src=\"#{url}\">")
+    @jqFileInput.remove()
+    @jqCaptionInput.val(@data.caption).show()
+    @jqFullWidthInput.prop('checked', @data.fullWidth)
+  serialize: ->
+    @data.caption = @jqCaptionInput.val()
+    @data.fullWidth = @jqFullWidthInput.is(':checked')
+    super @data
+  _bindEvents: ->
     @jqFileInput.on 'change', (e) =>
       file = e.currentTarget.files[0]
       url = don._.imageURL(file)
@@ -36,10 +42,3 @@ class don.blocks.Photo extends don.blocks.Base
       new don.FileUpload file,
         done: (response) =>
           @data.id = response.id
-
-  serialize: ->
-    @data.caption = @jqCaptionInput.val()
-    @data.fullWidth = @jqFullWidthInput.is(':checked')
-    super @data
-  afterRender: ->
-    # @jqInput.click()
