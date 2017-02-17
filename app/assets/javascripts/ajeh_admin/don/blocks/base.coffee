@@ -26,13 +26,12 @@ class don.blocks.Base
       this._init()
       this.init()
       this._initData(options.data)
+      don._.delay 8, => this.onRender()
     catch error
       don.error error
   init: ->
   teardown: ->
   render: ->
-    don._.delay 8, => this.onRender()
-    @jqRootEl
   onRender: ->
   serialize: (data) ->
     return null if _.isEmpty(data)
