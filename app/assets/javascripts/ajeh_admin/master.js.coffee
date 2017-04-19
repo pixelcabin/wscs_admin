@@ -108,6 +108,8 @@ ready = ->
   #       headerTimeout = ajeh._.delay 300, -> $('body').removeClass('nav-open')
 
   $('[data-action]').addClass('clickable').on 'click', (e) ->
+    nodeName = e.target.nodeName
+    return if nodeName is 'BUTTON' or nodeName is 'A'
     destination = $(this).data('action')
     if Turbolinks?
       Turbolinks.visit(destination)
