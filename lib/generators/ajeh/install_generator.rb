@@ -5,7 +5,7 @@ module Ajeh::Generators
     source_root File.expand_path('../templates/install', __FILE__)
 
     def create_admin_base_controller
-      generate 'controller', 'admin/base index --skip-routes --no-assets'
+      generate 'controller', 'admin/base --skip-routes --no-assets'
       base_controller = File.read find_in_source_paths('base_controller.rb')
       inject_into_class 'app/controllers/admin/base_controller.rb', 'Admin::BaseController', base_controller
     end
