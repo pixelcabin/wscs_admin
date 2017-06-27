@@ -38,7 +38,7 @@ module AjehAdmin
       field_html_classes << field_html_class if field_html_class
       input_wrapper_classes = %w(controls)
       input_wrapper_classes << 'controls-sized' if input_options.has_key?(:size)
-      input_wrapper_classes << 'controls-flex' if options.has_key?(:prefix) || input_options.has_key?(:suffix)
+      input_wrapper_classes << 'controls-flex' if options.has_key?(:prefix) || options.has_key?(:suffix)
       input_wrapper_classes << [ 'controls', as.to_s.dasherize ].join('-')
 
       attribute_has_errors = begin
