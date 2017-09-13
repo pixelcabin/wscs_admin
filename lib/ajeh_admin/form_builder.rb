@@ -80,6 +80,15 @@ module AjehAdmin
         html << t.content_tag(:div, input_wrapper_options) do
           t.concat send(as, attribute, input_options)
         end
+      elsif as == :ajeh_image
+        html << label(attribute, label, class: 'field-label')
+        html << t.content_tag(:div, input_wrapper_options) do
+          t.content_tag(:div, class: 'ajeh-image-input') do
+            t.concat t.file_field_tag(nil)
+            t.concat t.tag(:img, src: t.refile_url(object.send(attribute)))
+            t.concat send(:hidden_field, attribute, input_options)
+          end
+        end
       else
         html << label(attribute, label, class: 'field-label')
         html << t.content_tag(:div, input_wrapper_options) do
