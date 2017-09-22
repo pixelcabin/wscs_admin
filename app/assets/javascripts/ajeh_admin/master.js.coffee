@@ -6,7 +6,7 @@ $(document).on 'keyup', (e) ->
   $('body').toggleClass('fullpage')
 
 
-$(document).on('click', '[data-action]:not(.clickable)', (e) ->
+$(document).on 'click', '[data-action]:not(.clickable)', (e) ->
   nodeName = e.target.nodeName
   return if nodeName is 'BUTTON' or nodeName is 'A'
   destination = $(this).data('action')
