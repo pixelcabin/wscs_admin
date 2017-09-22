@@ -23,7 +23,7 @@ ready = ->
     testElem.style.border = '.5px solid transparent'
     document.body.appendChild(testElem)
     if testElem.offsetHeight is 1
-      document.querySelector('html').classList.add('support-css-hairlines');
+      document.querySelector('html').classList.add('support-css-hairlines')
     document.body.removeChild(testElem)
 
   $('[data-action]:not(.clickable)').addClass('clickable')
