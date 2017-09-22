@@ -5,6 +5,16 @@ $(document).on 'keyup', (e) ->
   e.preventDefault()
   $('body').toggleClass('fullpage')
 
+
+$(document).on('click', '[data-action]:not(.clickable)', (e) ->
+  nodeName = e.target.nodeName
+  return if nodeName is 'BUTTON' or nodeName is 'A'
+  destination = $(this).data('action')
+  if Turbolinks?
+    Turbolinks.visit(destination)
+  else
+    window.location = destination
+
 ready = ->
   FastClick.attach(document.body)
 
@@ -15,6 +25,8 @@ ready = ->
     if testElem.offsetHeight is 1
       document.querySelector('html').classList.add('support-css-hairlines');
     document.body.removeChild(testElem)
+
+  $('[data-action]:not(.clickable)').addClass('clickable')
 
   # window.googleMapsLoaded = ->
   #   window.googleMapsDidLoad = true
