@@ -185,7 +185,7 @@ section.tabular.compact .table-wrapper > table td:last-child {
   white-space: nowrap;
   opacity: 0;
   cursor: row-resize;
-  @include transition(opacity 0.15s ease-in-out);
+  transition: opacity 0.15s ease-in-out;
 }
 .table-wrapper > table td.handle span:after {
   content: '\e804';

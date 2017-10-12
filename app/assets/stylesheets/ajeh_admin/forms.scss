@@ -20,37 +20,10 @@ textarea {
   }
 }
 
-// form.destroy-form {
-//   margin-top: 30px;
-//   padding: 30px 30px 0;
-//   border-top: solid 1px #f5f5f5;
+// section.form form {
+//   max-width: 700px;
+//   padding: 0 30px;
 // }
-// @media only screen and (-moz-min-device-pixel-ratio: 1.5), only screen and (-webkit-min-device-pixel-ratio: 1.5), only screen and (min-device-pixel-ratio: 1.5) {
-//   form.destroy-form {
-//     border-top: 0;
-//     box-shadow: 0 -1px 1px -1px #ccc;
-//   }
-// }
-// form.destroy-form div {
-//   text-align: center;
-// }
-// form.destroy-form button {
-//   display: inline-block;
-//   padding: 12px 16px;
-//   color: #dc143c;
-//   border: solid 1px #f1f1f1;
-//   border-radius: 5px;
-//   @include transition(border-color 0.15s ease-in-out);
-// }
-// form.destroy-form button:hover {
-//   border-color: #dc143c;
-// }
-section.form form {
-  max-width: 700px;
-  // max-width: 1022px;
-  padding: 0 30px;
-  // margin: -18px 0 0;
-}
 section.form .field + fieldset {
   position: relative;
 }
@@ -58,10 +31,6 @@ section.form .field + fieldset,
 section.form fieldset + fieldset,
 section.form fieldset + .field {
   margin-top: 36px;
-}
-section.form fieldset .field,
-section.form fieldset a.remove_fields {
-  // padding-left: 18px;
 }
 section.form fieldset a.remove_fields {
   display: inline-block;
@@ -72,7 +41,7 @@ section.form fieldset a.remove_fields:after {
   content: '↑';
   margin-left: 0.5em;
   opacity: 0;
-  @include transition(opacity 0.15s ease-in-out);
+  transition: opacity 0.15s ease-in-out;
 }
 section.form fieldset a.remove_fields:hover:after {
   opacity: 1;
@@ -125,7 +94,7 @@ section.form .field-label {
   color: #777;
   padding: 14px 0 10px;
   white-space: nowrap;
-  @include transition(color 0.1s ease-in-out);
+  transition: color 0.1s ease-in-out;
   // text-transform: uppercase;
   font-size: 15px;
   color: #aaa;
@@ -172,10 +141,7 @@ section.form .controls.controls-select select {
   padding: 10px;
   border: solid 1px darken(#fff, 15%);
   border-radius: 4px;
-  // @include transition(border-color 0.15s ease-in-out);
   background-color: $fieldBackground;
-  // box-shadow: inset 0px 2px 2px darken(#fff, 2%);
-  // background-color: color(yellow);
 }
 section.form .controls-check-box {
   border: 0;
@@ -185,7 +151,7 @@ section.form .controls-check-box {
   padding-top: 18px;
   display: flex;
   flex-direction: row;
-  @include user-select(none);
+  user-select: none;
 }
 section.form .controls-check-box input[type=checkbox] {
   flex: 0 0 auto;
@@ -282,7 +248,7 @@ section.form .radio-buttons label {
   display: inline-block;
   user-select: none;
   border: solid 1px #d5d5d5;
-  @include transition(color 0.15s ease-in-out);
+  transition: color 0.15s ease-in-out;
   color: #999;
   margin-right: -1px;
 }
@@ -369,13 +335,13 @@ section.form .actions button {
 }
 
 .nested-fields .field {
-  @include transition(all 0.15s ease-in-out);
-  @include transform(translateZ(0));
+  transition: all 0.15s ease-in-out;
+  transform: translateZ(0);
 }
 
 .nested-fields.remove .field {
   opacity: 0.5;
-  @include filter(grayscale(1));
+  filter: grayscale(1);
 }
 .hint {
   margin-top: 20px;
@@ -403,46 +369,6 @@ section.form .actions button {
 .controls-prefix {
   padding-right: 10px;
 }
-
-// [data-prefix],
-// [data-suffix] {
-//   display: inline-block;
-//   position: relative;
-// }
-
-// [data-prefix]:before,
-// [data-suffix]:before {
-//   position: absolute;
-//   bottom: 0;
-//   padding: .75em;
-//   border: solid 1px transparent;
-//   color: #aaa;
-//   pointer-events: none;
-// }
-
-// [data-prefix]:before {
-//   content: attr(data-prefix);
-//   left: 0;
-// }
-
-// [data-suffix]:before {
-//   content: attr(data-suffix);
-//   right: 0;
-// }
-
-// [data-prefix] input[type=text],
-// [data-prefix] textarea {
-//   padding-left: 1.5em;
-// }
-
-// [data-suffix] input[type=text],
-// [data-suffix] textarea {
-//   padding-right: 1.5em;
-// }
-
-// .controls-checkboxes {
-//   @include d($color: red, $offset: 0px);
-// }
 
 .controls-checkboxes input {
   vertical-align: top;
@@ -498,16 +424,24 @@ section.form .rome-date .controls {
 }
 
 section.form .controls-flex {
-  @include display(flex);
-  @include flex-direction(row);
-  @include align-items(center);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
 }
 
 section.form .controls-flex.controls-sized {
-  @include display(inline-flex);
+  display: inline-flex;
 }
 
 section.form .field .controls.controls-datetime-select select {
   display: inline-block;
   width: auto;
+}
+section.form .field {
+  // display: block;
+  // margin: 0 auto;
+  width: 100%;
+  max-width: 700px;
+  padding: 0 30px;
+  // outline: solid thin red;
 }

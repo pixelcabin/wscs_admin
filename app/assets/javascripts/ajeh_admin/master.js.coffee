@@ -119,14 +119,10 @@ ready = ->
   #     mouseleave: ->
   #       headerTimeout = ajeh._.delay 300, -> $('body').removeClass('nav-open')
 
-  $('[data-action]').addClass('clickable').on 'click', (e) ->
-    nodeName = e.target.nodeName
-    return if nodeName is 'BUTTON' or nodeName is 'A'
-    destination = $(this).data('action')
-    if Turbolinks?
-      Turbolinks.visit(destination)
-    else
-      window.location = destination
+  # initDataActions()
+
+  # $('[data-remote]').on 'ajax:success', ->
+  #   initDataActions()
 
   $('input[type="text"], textarea').each ->
     $this = $(this)
@@ -146,7 +142,7 @@ ready = ->
 
   # $('.field > label').each -> $(this).text("#{$(this).text()}:")
 
-  $('#page-footer a.form-submit').on 'click', (e) ->
+  $('main > footer a.form-submit').on 'click', (e) ->
     e.preventDefault()
     return if ajaxBusy
     $('form:not(.button_to)').submit()
@@ -316,7 +312,7 @@ ready = ->
   # Auto-expanding textareas
   # $('textarea:not(.wysiwyg)').expanding().on 'keydown', (e) ->
   #   e.preventDefault() if e.originalEvent.keyCode is 13
-  $('.controls-text-area textarea').expanding()
+  $('.controls-text-area textarea:visible').addClass('-expanding').expanding()
 
   # Toggle form fields
   $('[data-toggle-name]').each ->
