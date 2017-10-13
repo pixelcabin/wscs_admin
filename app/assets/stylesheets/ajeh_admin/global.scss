@@ -23,13 +23,13 @@ html.unauthenticated body {
   height: 100%;
 }
 html.unauthenticated body {
-  @include display(flex);
-  @include flex-direction(column);
-  @include align-items(center);
-  @include justify-content(center);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 html.unauthenticated body > * {
-  @include flex(0 0 auto);
+  flex: 0 0 auto;
 }
 html.unauthenticated section.form .controls-check-box {
   padding-top: 0;
@@ -70,10 +70,10 @@ html.unauthenticated section.form .actions {
 a {
   text-decoration: none;
 }
-.clickable {
+[data-action] {
   cursor: pointer;
 }
-// #page-overlay {
+// main > .content-overlay {
 //   position: fixed;
 //   top: 0;
 //   left: 0;
@@ -84,40 +84,29 @@ a {
 //   transition: opacity 0.15s ease-in-out;
 //   pointer-events: none;
 // }
-#page {
-  position: fixed;
-  z-index: 100;
+main > .content {
+  // position: fixed;
+  // z-index: 100;
   top: $pageTop;
-  margin-top: 70px;
-  margin-bottom: 70px;
+  // margin-top: 70px;
+  // margin-bottom: 70px;
   padding-top: 30px;
   padding-bottom: 30px;
-  left: $navWidth;
-  bottom: 0;
-  right: 0;
-  // width: 100%;
-  // max-width: 700px;
+  // left: $navWidth;
+  // bottom: 0;
+  // right: 0;
   overflow-y: auto;
   -webkit-overflow-scrolling: touch;
   background-color: #fff;
-  // @include transition(all 0.3s ease-in-out);
-  // border-right: solid 20px $yesColor;
-  // border-bottom: solid 20px $yesColor;
-  // box-shadow: 20px 0 0 rgba(0,0,0,0.1);
 }
-#page.no-footer {
+main > .content.no-footer {
   margin-bottom: 0;
 }
-body.fullpage #page {
+body.fullpage main > .content {
   top: 0;
   left: 0;
   max-width: 100%;
 }
-// @media only screen and (min-width: 800px) {
-//   #page {
-//     padding-top: 110px;
-//   }
-// }
 
 #session {
   margin: 20px -25px 0;
@@ -132,20 +121,6 @@ body.fullpage #page {
   color: $navLinkHoverColor;
   background-color: $navLinkHoverBackground;
 }
-// #session button:hover {
-//   background-color: #f2f2f2;
-// }
-
-// #header nav {
-//   @include transform(translateX(0));
-// }
-// #page {
-//   @include transform(translateX(190px));
-// }
-// #page-overlay {
-//   pointer-events: auto;
-//   opacity: 0.6;
-// }
 
 .user-image {
   border-radius: 26px;
@@ -156,7 +131,7 @@ body.fullpage #page {
 }
 
 @media only screen and (max-width: 320px) {
-  #page {
+  main > .content {
     padding-top: 80px;
     font-size: 16px;
   }
@@ -199,13 +174,13 @@ html.unauthenticated body {
   height: 100%;
 }
 html.unauthenticated body {
-  @include display(flex);
-  @include flex-direction(column);
-  @include align-items(center);
-  @include justify-content(center);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
 }
 html.unauthenticated body > * {
-  @include flex(0 0 auto);
+  flex: 0 0 auto;
 }
 html.unauthenticated section.form .controls-check-box {
   padding-top: 0;
@@ -245,4 +220,32 @@ a[href^="mailto:"]:hover,
 .table-wrapper a[href^="mailto:"]:hover {
   color: #2196F3;
   border-bottom-color: #2196F3;
+}
+
+main {
+  $inset: 0;
+  position: fixed;
+  top: $inset;
+  left: $navWidth;
+  right: $inset;
+  bottom: $inset;
+  display: flex;
+  flex-direction: column;
+  transition: left .2s;
+
+
+  border-left: solid $pageHeaderBorder #ededed;
+
+  html.support-css-hairlines & {
+    border-width: 0.5px;
+  }
+}
+
+// main > * {
+//   position: static !important;
+// }
+
+main > .content {
+  flex-grow: 1;
+  background-color: #fff;
 }
