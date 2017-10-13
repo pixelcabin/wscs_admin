@@ -90,8 +90,6 @@ main > .content {
   top: $pageTop;
   // margin-top: 70px;
   // margin-bottom: 70px;
-  padding-top: 30px;
-  padding-bottom: 30px;
   // left: $navWidth;
   // bottom: 0;
   // right: 0;
@@ -99,13 +97,14 @@ main > .content {
   -webkit-overflow-scrolling: touch;
   background-color: #fff;
 }
-main > .content.no-footer {
-  margin-bottom: 0;
-}
 body.fullpage main > .content {
   top: 0;
   left: 0;
   max-width: 100%;
+}
+main > .content > .inner {
+  padding-top: 30px;
+  padding-bottom: 30px;
 }
 
 #session {
