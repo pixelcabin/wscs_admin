@@ -6,7 +6,7 @@ $(document).on 'keyup', (e) ->
   $('body').toggleClass('fullpage')
 
 
-$(document).on 'click', '[data-action]:not(.clickable)', (e) ->
+$(document).on 'click', '[data-action]', (e) ->
   nodeName = e.target.nodeName
   return if nodeName is 'BUTTON' or nodeName is 'A'
   destination = $(this).data('action')
@@ -25,8 +25,6 @@ ready = ->
     if testElem.offsetHeight is 1
       document.querySelector('html').classList.add('support-css-hairlines')
     document.body.removeChild(testElem)
-
-  $('[data-action]:not(.clickable)').addClass('clickable')
 
   # window.googleMapsLoaded = ->
   #   window.googleMapsDidLoad = true

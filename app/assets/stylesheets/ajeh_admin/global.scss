@@ -70,7 +70,7 @@ html.unauthenticated section.form .actions {
 a {
   text-decoration: none;
 }
-.clickable {
+[data-action] {
   cursor: pointer;
 }
 // main > .content-overlay {

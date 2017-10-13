@@ -445,3 +445,11 @@ section.form .field {
   padding: 0 30px;
   // outline: solid thin red;
 }
+
+section.form .field + .field {
+  margin-top: 15px;
+}
+
+section.form .field.-fullwidth {
+  max-width: none;
+}
