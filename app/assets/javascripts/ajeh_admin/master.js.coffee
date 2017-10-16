@@ -310,7 +310,7 @@ ready = ->
   # Auto-expanding textareas
   # $('textarea:not(.wysiwyg)').expanding().on 'keydown', (e) ->
   #   e.preventDefault() if e.originalEvent.keyCode is 13
-  $('.controls-text-area textarea:visible').addClass('-expanding').expanding()
+  $('.controls-text-area:not(.-non-expanding) textarea:visible').addClass('-expanding').expanding()
 
   # Toggle form fields
   $('[data-toggle-name]').each ->
