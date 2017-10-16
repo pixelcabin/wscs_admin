@@ -446,7 +446,8 @@ section.form .field {
   // outline: solid thin red;
 }
 
-section.form .field + .field {
+section.form .field + .field,
+section.form .field-errors + .field {
   margin-top: 15px;
 }
 

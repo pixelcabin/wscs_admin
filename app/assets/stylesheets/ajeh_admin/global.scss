@@ -145,6 +145,7 @@ html.unauthenticated {
 }
 
 #error_explanation {
+  margin: 0 30px 14px;
   padding: 15px;
   border-radius: 5px;
   color: #fff;
@@ -164,6 +165,7 @@ html.unauthenticated {
 }
 
 .field-errors {
+  margin-left: 30px;
   margin-top: 1em;
   color: rgba(220,20,60,0.96);
 }
