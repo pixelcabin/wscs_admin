@@ -177,7 +177,8 @@ main > header h1 {
   main > header h1 {
     font-size: 20px;
   }
-  main > header > a {
+  main > header > a,
+  main > header > .actions > a {
     padding: 0 15px;
   }
 }
@@ -217,7 +218,8 @@ html.support-css-hairlines main > footer {
   border-width: 0.5px;
 }
 
-main > header > a {
+main > header > a,
+main > header > .actions {
   position: relative;
   color: $pageHeaderLinkColor;
   padding: 0 30px;
@@ -229,6 +231,15 @@ main > header > a {
   top: 0;
   right: 0;
   bottom: 0;
+}
+
+main > header > .actions {
+  padding: 0 15px;
+}
+
+main > header > .actions > a {
+  display: inline-block;
+  padding: 0 15px;
 }
 
 main > header .button_to {
