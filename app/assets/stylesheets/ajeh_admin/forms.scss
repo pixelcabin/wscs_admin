@@ -447,7 +447,8 @@ section.form .field {
 }
 
 section.form .field + .field,
-section.form .field-errors + .field {
+section.form .field-errors + .field,
+section.form .field-errors + fieldset {
   margin-top: 15px;
 }
 
