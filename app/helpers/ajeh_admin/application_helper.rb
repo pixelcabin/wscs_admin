@@ -4,15 +4,27 @@ module AjehAdmin
       @pagescript.to_s.camelize(:lower)
     end
 
-    def ajeh_link_to(text, url=nil, options={})
-      html_classes = []
-      highlights_on = options.delete(:highlights_on)
-      html_classes << options.delete(:class)
+    def ajeh_link_to(name = nil, options = nil, html_options = nil, &block)
+      html_options, options, name = options, name, block if block_given?
+
+      options ||= {}
+      html_options ||= {}
+
+      highlights_on = html_options.delete(:highlights_on)
+      selected_class = html_options.delete(:selected_class) { '-selected' }
+
+      html_options = convert_options_to_data_attributes(options, html_options)
+
+      url = url_for(options)
+      html_options["href".freeze] ||= url
+
       if highlights_on
         matches = request.path.match(highlights_on)
-        html_classes << options.fetch(:highlight_class, 'selected') if matches
+        html_options["class".freeze] ||= ""
+        html_options["class".freeze] += " #{selected_class}" if matches
       end
-      link_to(text, url, class: html_classes.join(' '), data: { text: text })
+
+      content_tag("a".freeze, name || url, html_options, &block)
     end
 
     def form_submit_link(text='Save')
