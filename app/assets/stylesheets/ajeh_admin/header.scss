@@ -87,7 +87,8 @@
   color: $navLinkHoverColor;
   background-color: $navLinkHoverBackground;
 }
-.header-nav a.selected {
+.header-nav a.selected,
+.header-nav a.-selected {
   color: $navLinkSelectedColor;
   background-color: $navLinkSelectedBackground;
   // border-left: 10px solid color(blue);
