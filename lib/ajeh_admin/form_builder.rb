@@ -71,9 +71,11 @@ module AjehAdmin
       elsif as == :wysiwyg
         html << label(attribute, label, class: 'field-label')
         html << t.content_tag(:div, input_wrapper_options) do
+          wysiwyg_config = options[:wysiwyg]
+          wysiwyg_config = MultiJson.dump(wysiwyg_config) unless wysiwyg_config.is_a?(String)
           input_options[:data] = {
             wysiwyg: true,
-            wysiwyg_config: options[:wysiwyg]
+            wysiwyg_config:
           }
           t.concat send(:text_area, attribute, input_options)
         end
