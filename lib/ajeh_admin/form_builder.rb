@@ -81,8 +81,9 @@ module AjehAdmin
         end
       elsif as == :don
         as = :hidden_field
+        don_config = MultiJson.dump(options[:don]) if options[:don]
         input_options[:data] ||= {}
-        input_options[:data] = input_options[:data].merge(don: true)
+        input_options[:data] = input_options[:data].merge(don: true, don_config: don_config)
         html << label(attribute, label, class: 'field-label')
         html << t.content_tag(:div, input_wrapper_options) do
           t.concat send(as, attribute, input_options)
