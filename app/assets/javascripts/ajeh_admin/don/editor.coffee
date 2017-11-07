@@ -12,10 +12,12 @@ class don.Editor
   constructor: (el) ->
     @el = el
     @$el = $(el)
+    return if @$el.data('don-initialized')
     @_id = _.uniqueId('don-editor-')
     don.log 'Initalizing don', this
     this._init()
     don._instances.push this
+    @$el.data('don-initialized', true)
     this
   serialize: ->
     data = []
