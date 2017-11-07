@@ -75,7 +75,7 @@ module AjehAdmin
           wysiwyg_config = MultiJson.dump(wysiwyg_config) unless wysiwyg_config.is_a?(String)
           input_options[:data] = {
             wysiwyg: true,
-            wysiwyg_config:
+            wysiwyg_config: wysiwyg_config
           }
           t.concat send(:text_area, attribute, input_options)
         end
