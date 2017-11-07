@@ -2,6 +2,11 @@ module AjehAdmin
   class FormBuilder < ActionView::Helpers::FormBuilder
     delegate :content_tag, :tag, to: :@template
 
+    def fields(attribute)
+      t = @template
+      t.nested_fields_for attribute, form: self
+    end
+
     def field(attribute, options={}, &block)
       t = @template
       object = @object
