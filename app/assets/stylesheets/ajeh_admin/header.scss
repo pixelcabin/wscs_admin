@@ -155,14 +155,14 @@ main > header h1 {
   white-space: nowrap;
 }
 
-@media only screen and (max-width: 560px) {
-  main > footer a span.icon {
-    display: inline;
-  }
-  main > footer a span.string {
-    display: none;
-  }
-}
+// @media only screen and (max-width: 560px) {
+//   main > footer a span.icon {
+//     display: inline;
+//   }
+//   main > footer a span.string {
+//     display: none;
+//   }
+// }
 
 @media only screen and (max-width: 320px) {
   #header .header,
