@@ -23,6 +23,7 @@ module AjehAdmin
       translation.gsub!(/\band\b/i, 'and')
       translation.gsub!(/\bpdf\b/i, 'PDF')
       translation.gsub!(/\burl\b/i, 'URL')
+      translation.gsub!(/\bseo\b/i, 'SEO')
 
       label = options.delete(:label) { nil }
       hint = options.delete(:hint) { nil }
