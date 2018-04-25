@@ -1,5 +1,5 @@
 //= require jquery
-//= require jquery-ujs
+//= require jquery_ujs
 // require turbolinks
 // require cocoon
 //= require ./modernizr
