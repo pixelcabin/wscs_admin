@@ -10,7 +10,7 @@ module AjehAdmin
     end
 
     initializer 'ajeh_admin.action_controller' do |app|
-      ActiveSupport.on_load :action_controller do
+      ActiveSupport.on_load :action_controller_base do
         helper AjehAdmin::ApplicationHelper
       end
     end
